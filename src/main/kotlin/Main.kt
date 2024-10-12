@@ -9,7 +9,16 @@ fun main() {
     println("Введите трехзначные числа:")
     for (i in 0 until rows) {
         for (j in 0 until cols) {
-            array[i][j] = readLine()?.toIntOrNull() ?: return
+            var inputNumber: Int?
+            do {
+                print("Введите трехзначное число для позиции [$i][$j]: ")
+                inputNumber = readLine()?.toIntOrNull()
+                if (inputNumber == null || inputNumber !in 100..999 && inputNumber !in -999..-100) {
+                    println("Ошибка: необходимо ввести трёхзначное число.")
+                }
+            } while (inputNumber == null || inputNumber !in 100..999 && inputNumber !in -999..-100)
+
+            array[i][j] = inputNumber
         }
     }
 
